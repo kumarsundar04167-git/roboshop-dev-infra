@@ -3,7 +3,7 @@ resource "aws_security_group_rule" "mongodb-catalogue" {
   from_port         = 27017
   to_port           = 27017
   protocol          = "tcp"
-  source_securirity_group_id = local.catalogue_sg_id
+  source_security_group_id = local.catalogue_sg_id
   security_group_id          = local.mongodb_sg_id
 }
 
@@ -12,7 +12,7 @@ resource "aws_security_group_rule" "mongodb-user" {
   from_port         = 27017
   to_port           = 27017
   protocol          = "tcp"
-  source_securirity_group_id = local.user_sg_id
+  source_security_group_id = local.user_sg_id
   security_group_id          = local.mongodb_sg_id
 }
 resource "aws_security_group_rule" "mongodb-bastion" {
@@ -20,7 +20,7 @@ resource "aws_security_group_rule" "mongodb-bastion" {
   from_port         = 22
   to_port           = 22
   protocol          = "tcp"
-  source_securirity_group_id = local.bastion_sg_id
+  source_security_group_id = local.bastion_sg_id
   security_group_id          = local.mongodb_sg_id
 }
 
@@ -30,7 +30,7 @@ resource "aws_security_group_rule" "redis-user" {
   from_port         = 6379
   to_port           = 6379
   protocol          = "tcp"
-  source_securirity_group_id = local.user_sg_id
+  source_security_group_id = local.user_sg_id
   security_group_id          = local.redis_sg_id
 }
 
@@ -39,7 +39,7 @@ resource "aws_security_group_rule" "redis-cart" {
   from_port         = 6379
   to_port           = 6379
   protocol          = "tcp"
-  source_securirity_group_id = local.cart_sg_id
+  source_security_group_id = local.cart_sg_id
   security_group_id          = local.redis_sg_id
 }
 
@@ -48,7 +48,7 @@ resource "aws_security_group_rule" "redis-bastion" {
   from_port         = 22
   to_port           = 22
   protocol          = "tcp"
-  source_securirity_group_id = local.bastion_sg_id
+  source_security_group_id = local.bastion_sg_id
   security_group_id          = local.redis_sg_id
 }
 
@@ -57,7 +57,7 @@ resource "aws_security_group_rule" "mysql-shipping" {
   from_port         = 3306
   to_port           = 3306
   protocol          = "tcp"
-  source_securirity_group_id = local.shipping_sg_id
+  source_security_group_id = local.shipping_sg_id
   security_group_id          = local.mysql_sg_id
 }
 
@@ -66,7 +66,7 @@ resource "aws_security_group_rule" "mysql-bastion" {
   from_port         = 22
   to_port           = 22
   protocol          = "tcp"
-  source_securirity_group_id = local.bastion_sg_id
+  source_security_group_id = local.bastion_sg_id
   security_group_id          = local.mysql_sg_id
 }
 
@@ -75,7 +75,7 @@ resource "aws_security_group_rule" "rabbitmq-payment" {
   from_port         = 5672
   to_port           = 5672
   protocol          = "tcp"
-  source_securirity_group_id = local.payment_sg_id
+  source_security_group_id = local.payment_sg_id
   security_group_id          = local.rabbitmq_sg_id
 }
 
@@ -84,7 +84,7 @@ resource "aws_security_group_rule" "rabbitmq-bastion" {
   from_port         = 22
   to_port           = 22
   protocol          = "tcp"
-  source_securirity_group_id = local.bastion_sg_id
+  source_security_group_id = local.bastion_sg_id
   security_group_id          = local.rabbitmq_sg_id
 }
 
@@ -93,7 +93,7 @@ resource "aws_security_group_rule" "catalogue-backend_alb" {
   from_port         = 8080
   to_port           = 8080
   protocol          = "tcp"
-  source_securirity_group_id = local.backend_alb_sg_id
+  source_security_group_id = local.backend_alb_sg_id
   security_group_id          = local.catalogue_sg_id
 }
 
@@ -102,7 +102,7 @@ resource "aws_security_group_rule" "catalogue-bastion" {
   from_port         = 22
   to_port           = 22
   protocol          = "tcp"
-  source_securirity_group_id = local.bastion_sg_id
+  source_security_group_id = local.bastion_sg_id
   security_group_id          = local.catalogue_sg_id
 }
 
@@ -111,7 +111,7 @@ resource "aws_security_group_rule" "user-backend_alb" {
   from_port         = 8080
   to_port           = 8080
   protocol          = "tcp"
-  source_securirity_group_id = local.backend_alb_sg_id
+  source_security_group_id = local.backend_alb_sg_id
   security_group_id          = local.user_sg_id
 }
 
@@ -120,7 +120,7 @@ resource "aws_security_group_rule" "user-bastion" {
   from_port         = 22
   to_port           = 22
   protocol          = "tcp"
-  source_securirity_group_id = local.bastion_sg_id
+  source_security_group_id = local.bastion_sg_id
   security_group_id          = local.user_sg_id
 }
 
@@ -129,7 +129,7 @@ resource "aws_security_group_rule" "cart-backend_alb" {
   from_port         = 8080
   to_port           = 8080
   protocol          = "tcp"
-  source_securirity_group_id = local.backend_alb_sg_id
+  source_security_group_id = local.backend_alb_sg_id
   security_group_id          = local.cart_sg_id
 }
 
@@ -138,7 +138,7 @@ resource "aws_security_group_rule" "cart-bastion" {
   from_port         = 22
   to_port           = 22
   protocol          = "tcp"
-  source_securirity_group_id = local.bastion_sg_id
+  source_security_group_id = local.bastion_sg_id
   security_group_id          = local.cart_sg_id
 }
 
@@ -147,7 +147,7 @@ resource "aws_security_group_rule" "shipping-backend_alb" {
   from_port         = 8080
   to_port           = 8080
   protocol          = "tcp"
-  source_securirity_group_id = local.backend_alb_sg_id
+  source_security_group_id = local.backend_alb_sg_id
   security_group_id          = local.shipping_sg_id
 }
 
@@ -156,7 +156,7 @@ resource "aws_security_group_rule" "shipping-bastion" {
   from_port         = 22
   to_port           = 22
   protocol          = "tcp"
-  source_securirity_group_id = local.bastion_sg_id
+  source_security_group_id = local.bastion_sg_id
   security_group_id          = local.shipping_sg_id
 }
 
@@ -165,7 +165,7 @@ resource "aws_security_group_rule" "payment-backend_alb" {
   from_port         = 8080
   to_port           = 8080
   protocol          = "tcp"
-  source_securirity_group_id = local.backend_alb_sg_id
+  source_security_group_id = local.backend_alb_sg_id
   security_group_id          = local.payment_sg_id
 }
 
@@ -174,7 +174,7 @@ resource "aws_security_group_rule" "payment-bastion" {
   from_port         = 22
   to_port           = 22
   protocol          = "tcp"
-  source_securirity_group_id = local.bastion_sg_id
+  source_security_group_id = local.bastion_sg_id
   security_group_id          = local.payment_sg_id
 }
 
@@ -184,7 +184,7 @@ resource "aws_security_group_rule" "backend_alb-frontend" {
   from_port         = 80
   to_port           = 80
   protocol          = "tcp"
-  source_securirity_group_id = local.frontend_sg_id
+  source_security_group_id = local.frontend_sg_id
   security_group_id          = local.backend_alb_sg_id
 }
 
@@ -193,7 +193,7 @@ resource "aws_security_group_rule" "backend_alb-bastion" {
   from_port         = 80
   to_port           = 80
   protocol          = "tcp"
-  source_securirity_group_id = local.bastion_sg_id
+  source_security_group_id = local.bastion_sg_id
   security_group_id          = local.backend_alb_sg_id
 }
 
@@ -202,7 +202,7 @@ resource "aws_security_group_rule" "backend_alb-catalogue" {
   from_port         = 80
   to_port           = 80
   protocol          = "tcp"
-  source_securirity_group_id = local.catalogue_sg_id
+  source_security_group_id = local.catalogue_sg_id
   security_group_id          = local.backend_alb_sg_id
 }
 
@@ -211,7 +211,7 @@ resource "aws_security_group_rule" "backend_alb-user" {
   from_port         = 80
   to_port           = 80
   protocol          = "tcp"
-  source_securirity_group_id = local.user_sg_id
+  source_security_group_id = local.user_sg_id
   security_group_id          = local.backend_alb_sg_id
 }
 
@@ -220,7 +220,7 @@ resource "aws_security_group_rule" "backend_alb-cart" {
   from_port         = 80
   to_port           = 80
   protocol          = "tcp"
-  source_securirity_group_id = local.cart_sg_id
+  source_security_group_id = local.cart_sg_id
   security_group_id          = local.backend_alb_sg_id
 }
 
@@ -229,7 +229,7 @@ resource "aws_security_group_rule" "backend_alb-shipping" {
   from_port         = 80
   to_port           = 80
   protocol          = "tcp"
-  source_securirity_group_id = local.shipping_sg_id
+  source_security_group_id = local.shipping_sg_id
   security_group_id          = local.backend_alb_sg_id
 }
 
@@ -238,7 +238,7 @@ resource "aws_security_group_rule" "backend_alb-payment" {
   from_port         = 80
   to_port           = 80
   protocol          = "tcp"
-  source_securirity_group_id = local.payment_sg_id
+  source_security_group_id = local.payment_sg_id
   security_group_id          = local.backend_alb_sg_id
 }
 
@@ -247,7 +247,7 @@ resource "aws_security_group_rule" "backend_alb-vpn" {
   from_port         = 80
   to_port           = 80
   protocol          = "tcp"
-  source_securirity_group_id = local.vpn_sg_id
+  source_security_group_id = local.vpn_sg_id
   security_group_id          = local.backend_alb_sg_id
 }
 
@@ -256,7 +256,7 @@ resource "aws_security_group_rule" "frontend-frontend_alb" {
   from_port         = 80
   to_port           = 80
   protocol          = "tcp"
-  source_securirity_group_id = local.frontend_alb_sg_id
+  source_security_group_id = local.frontend_alb_sg_id
   security_group_id          = local.frontend_sg_id
 }
 
@@ -265,7 +265,7 @@ resource "aws_security_group_rule" "frontend-bastion" {
   from_port         = 22
   to_port           = 22
   protocol          = "tcp"
-  source_securirity_group_id = local.bastion_sg_id
+  source_security_group_id = local.bastion_sg_id
   security_group_id          = local.frontend_sg_id
 }
 
@@ -274,7 +274,7 @@ resource "aws_security_group_rule" "frontend_alb-https" {
   from_port         = 443
   to_port           = 443
   protocol          = "tcp"
-  cidr_block        = ["0.0.0.0/0"] 
+  cidr_blocks        = ["0.0.0.0/0"] 
   security_group_id = local.frontend_alb_sg_id
 }
 
@@ -283,7 +283,7 @@ resource "aws_security_group_rule" "frontend_alb-http" {
   from_port         = 80
   to_port           = 80
   protocol          = "tcp"
-  cidr_block        = ["0.0.0.0/0"] 
+  cidr_blocks        = ["0.0.0.0/0"] 
   security_group_id = local.frontend_alb_sg_id
 }
 
@@ -292,7 +292,7 @@ resource "aws_security_group_rule" "bastion-my_ip_address" {
   from_port         = 22
   to_port           = 22
   protocol          = "tcp"
-  cidr_block        = ["${chomp(data.http.my_public_ip.response_body)}/32"] 
+  cidr_blocks        = ["${chomp(data.http.my_public_ip.response_body)}/32"] 
   security_group_id = local.bastion_sg_id
 }
 
