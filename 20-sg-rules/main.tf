@@ -292,7 +292,7 @@ resource "aws_security_group_rule" "bastion-my_ip_address" {
   from_port         = 22
   to_port           = 22
   protocol          = "tcp"
-  cidr_blocks        = ["${chomp(data.http.my_public_ip.response_body)}/32"] 
+  cidr_blocks        = ["0.0.0.0/0"] 
   security_group_id = local.bastion_sg_id
 }
 
