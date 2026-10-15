@@ -99,7 +99,7 @@ resource "aws_instance" "rabbitmq" {
   )
 }
 
-resource "terraform_data" "mongodb" {
+resource "terraform_data" "rabbitmq" {
   triggers_replace = [
     aws_instance.rabbitmq.id
   ]
@@ -125,3 +125,48 @@ connection {
     ]
   }
 }
+
+
+resource "aws_instance" "rabbitmq" {
+  ami                  = local.ami_id
+  instance_type        = "t3.micro" # Cost-effective instance type
+  subnet_id            = local.database_subnet_id
+  iam_instance_profile = aws_iam_instance_profile.mysql.name
+  vpc_security_group_ids = [local.mysql_sg_id]
+
+  tags = merge(
+    var.mysql_tags,
+    local.common_tags,
+    {
+        Name = "${local.common_name}-mysql"
+    }
+  )
+}
+
+resource "terraform_data" "mysql" {
+  triggers_replace = [
+    aws_instance.mysql.id
+  ]
+
+
+connection {
+      type        = "ssh"
+      user        = "ec2-user"
+      password    = "DevOps321"
+      host        = aws_instance.mysql.private_ip
+    }
+
+    provisioner "file" {
+    source      = "bootstrap.sh"
+    destination = "/tmp/bootstrap.sh"
+  }
+
+
+    provisioner "remote-exec" {
+     inline = [
+      "chmod +x /tmp/bootstrap.sh",
+      "sudo sh /tmp/bootstrap.sh mysql ${var.environment}"
+    ]
+  }
+}
+

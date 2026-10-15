@@ -37,3 +37,7 @@ variable "mysql_tags" {
     type = map
     default = {}
 }
+
+variable "mysql_root_password" {
+    type = string
+}
