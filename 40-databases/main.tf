@@ -127,7 +127,7 @@ connection {
 }
 
 
-resource "aws_instance" "rabbitmq" {
+resource "aws_instance" "mysql" {
   ami                  = local.ami_id
   instance_type        = "t3.micro" # Cost-effective instance type
   subnet_id            = local.database_subnet_id
