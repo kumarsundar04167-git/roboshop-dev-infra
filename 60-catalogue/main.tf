@@ -178,7 +178,7 @@ resource "aws_autoscaling_group" "catalogue" {
     )
     content {
      key                 = "tag.key"
-     value               = "atag.value"
+     value               = "tag.value"
      propagate_at_launch = true
     }
    
