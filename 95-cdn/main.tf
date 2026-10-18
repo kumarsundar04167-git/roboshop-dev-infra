@@ -27,7 +27,7 @@ resource "aws_cloudfront_distribution" "roboshop" {
   default_cache_behavior {
     target_origin_id       = "${var.project}-${var.environment}.${var.domain_name}"
     viewer_protocol_policy = "https-only"
-    allowed_methods        = ["GET", "HEAD", "OPTIONS", "POST", "PUT", "DELETE"]
+    allowed_methods        = ["GET", "HEAD", "OPTIONS", "POST", "PUT", ""PATCH", DELETE"]
     cached_methods         = ["GET", "HEAD"]
     cache_policy_id = local.cachingDisabled
     compress               = true
