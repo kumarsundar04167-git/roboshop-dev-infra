@@ -30,12 +30,6 @@ resource "aws_cloudfront_distribution" "roboshop" {
     allowed_methods        = ["GET", "HEAD", "OPTIONS", "POST", "PUT", "DELETE"]
     cached_methods         = ["GET", "HEAD"]
     cache_policy_id = local.cachingDisabled
-
-    
-
-    min_ttl                = 0
-    default_ttl            = 3600
-    max_ttl                = 86400
     compress               = true
   }
   
