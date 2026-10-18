@@ -99,7 +99,7 @@ resource "aws_cloudfront_distribution" "cdn" {
     }
   )
   
-  resource "aws_route53_record" "cloudfront" {
+resource "aws_route53_record" "cloudfront" {
   
   zone_id  = var.zone_id
   name     = "{var.project}-cdn.${var.domain_name}"
