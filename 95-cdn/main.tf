@@ -1,4 +1,4 @@
-resource "aws_cloudfront_distribution" "cdn" {
+resource "aws_cloudfront_distribution" "roboshop" {
   enabled             = true
   is_ipv6_enabled     = false
   comment             = "Main CDN Distribution"
