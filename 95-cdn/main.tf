@@ -26,17 +26,12 @@ resource "aws_cloudfront_distribution" "roboshop" {
   # Default Cache Behavior
   default_cache_behavior {
     target_origin_id       = "${var.project}-${var.environment}.${var.domain_name}"
-    viewer_protocol_policy = "redirect-to-https"
+    viewer_protocol_policy = "https-only"
     allowed_methods        = ["GET", "HEAD", "OPTIONS", "POST", "PUT", "DELETE"]
     cached_methods         = ["GET", "HEAD"]
     cache_policy_id = local.cachingDisabled
 
-    forwarded_values {
-     query_string = false
-      cookies {
-        forward = "none"
-      }
-    }
+    
 
     min_ttl                = 0
     default_ttl            = 3600
@@ -57,7 +52,7 @@ resource "aws_cloudfront_distribution" "roboshop" {
     default_ttl            = 86400
     max_ttl                = 31536000
     compress               = true
-    viewer_protocol_policy = "redirect-to-https"
+    viewer_protocol_policy = "https-only"
   }
 
    # Cache behavior with precedence 1
@@ -73,7 +68,7 @@ resource "aws_cloudfront_distribution" "roboshop" {
     default_ttl            = 3600
     max_ttl                = 86400
     compress               = true
-    viewer_protocol_policy = "redirect-to-https"
+    viewer_protocol_policy = "https-only"
   }
 
   # Price Class (Restricts locations to minimize cost)
