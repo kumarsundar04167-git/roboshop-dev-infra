@@ -27,7 +27,7 @@ resource "aws_cloudfront_distribution" "roboshop" {
   default_cache_behavior {
     target_origin_id       = "${var.project}-${var.environment}.${var.domain_name}"
     viewer_protocol_policy = "https-only"
-    allowed_methods        = ["GET", "HEAD", "OPTIONS", "POST", "PUT", "PATCH", DELETE"]
+    allowed_methods        = ["GET", "HEAD", "OPTIONS", "POST", "PUT", "PATCH", "DELETE"]
     cached_methods         = ["GET", "HEAD"]
     cache_policy_id = local.cachingDisabled
     compress               = true
@@ -91,13 +91,13 @@ resource "aws_cloudfront_distribution" "roboshop" {
 resource "aws_route53_record" "cloudfront" {
   
   zone_id  = var.zone_id
-  name     = "{var.project}-cdn.${var.domain_name}"
+  name     = "${var.project}-cdn.${var.domain_name}"
   type     = "A"
 
   alias {
     name                   = aws_cloudfront_distribution.roboshop.domain_name
     zone_id                = aws_cloudfront_distribution.roboshop.hosted_zone_id
-    evaluate_target_health = true
+    evaluate_target_health = false
   }
   allow_overwrite = true
 }
