@@ -98,7 +98,7 @@ resource "aws_cloudfront_distribution" "cdn" {
         Name = "${var.project}-${var.environment}"
     }
   )
-  
+}  
 resource "aws_route53_record" "cloudfront" {
   
   zone_id  = var.zone_id
@@ -111,5 +111,4 @@ resource "aws_route53_record" "cloudfront" {
     evaluate_target_health = true
   }
   allow_overwrite = true
-}
 }
